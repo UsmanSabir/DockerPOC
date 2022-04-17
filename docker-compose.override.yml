@@ -24,6 +24,9 @@ services:
   search:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - Services__Orders=http://orders
+      - Services__Products=http://products
+      - Services__Customers=http://customers
     ports:
       - "6004:80"
 
