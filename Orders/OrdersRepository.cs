@@ -7,7 +7,20 @@
         public OrdersRepository()
         {
             for (int i = 0; i < 10; i++)
-                _orders.Add(new Order() { Id = i, CustomerId = i, OrderDate=DateTime.Now, Products= new List<int>() { i } });
+                _orders.Add(new Order()
+                {
+                    Id = i,
+                    CustomerId = i,
+                    OrderDate = DateTime.Now,
+                    OrderItems = new List<OrderItem>(){
+                     new OrderItem()
+                     {
+                         Id = i,
+                         Quantity = i*2,
+                         Price = i*3,
+                     }
+                    }
+                });
         }
 
         public List<Order> GetAll()
@@ -25,7 +38,14 @@
     {
         public int Id { get; set; }
         public int CustomerId { get; set; }
-        public List<int>? Products { get; set; }
+        public List<OrderItem> OrderItems { get; set; }
         public DateTime OrderDate { get; set; }
+    }
+
+    public class OrderItem
+    {
+        public int Id { get; set; }
+        public int Price { get; set; }
+        public int Quantity { get; set; }
     }
 }
