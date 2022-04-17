@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  customers:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "6001:80"
+
+  orders:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "6002:80"
+
+
+  products:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "6003:80"
+
+
+  search:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "6004:80"
+

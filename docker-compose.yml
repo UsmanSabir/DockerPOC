@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  customers:
+    image: ${DOCKER_REGISTRY-}customers
+    build:
+      context: .
+      dockerfile: Customers/Dockerfile
+
+  orders:
+    image: ${DOCKER_REGISTRY-}orders
+    build:
+      context: .
+      dockerfile: Orders/Dockerfile
+
+
+  products:
+    image: ${DOCKER_REGISTRY-}products
+    build:
+      context: .
+      dockerfile: Products/Dockerfile
+
+
+  search:
+    image: ${DOCKER_REGISTRY-}search
+    build:
+      context: .
+      dockerfile: Search/Dockerfile
+
