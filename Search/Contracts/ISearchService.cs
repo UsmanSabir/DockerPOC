@@ -4,6 +4,6 @@ namespace Search.Contracts
 {
     public interface ISearchService
     {
-        SearchResult Search(SearchModel search);
+        Task<SearchResult> Search(SearchModel search);
     }
 }

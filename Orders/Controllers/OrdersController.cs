@@ -27,5 +27,11 @@ namespace Orders.Controllers
         {
             return _ordersRepository.GetById(id);
         }
+
+        [HttpGet("GetByCustomerId/{customerId}")]
+        public List<Order> GetByCustomerId(int customerId)
+        {
+            return _ordersRepository.GetByCustomerId(customerId);
+        }
     }
 }

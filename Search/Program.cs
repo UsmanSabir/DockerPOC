@@ -11,6 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<ISearchService, SearchService>();
+builder.Services.AddScoped<IOrderService, OrderService>(); 
 
 builder.Services.AddHttpClient("OrdersService", config =>
 {

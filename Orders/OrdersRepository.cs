@@ -15,7 +15,10 @@
             return _orders.ToList();
         }
 
-        public Order GetById(int id) => _orders.FirstOrDefault(p => p.Id == id);
+        public List<Order> GetByCustomerId(int customerId) => _orders.Where(p => p.CustomerId == customerId).ToList();
+       
+
+        public Order GetById(int id) => _orders.FirstOrDefault(p => p.CustomerId == id);
     }
 
     public class Order

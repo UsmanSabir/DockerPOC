@@ -5,5 +5,6 @@
         List<Order> GetAll();
 
         Order GetById(int id);
+        List<Order> GetByCustomerId(int customerId);
     }
 }
