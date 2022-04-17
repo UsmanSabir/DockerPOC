@@ -26,7 +26,7 @@ namespace Search.Services
                 {
                     o.OrderItems.ForEach(oItem =>
                     {
-                        oItem.Name = productsResult.Products?.FirstOrDefault(p => p.Id == oItem.Id)?.Name;
+                        oItem.Name = productsResult.Products?.FirstOrDefault(p => p.Id == oItem.Id)?.Name??"Product(s) missing";
                     });
                 });
                 return new SearchResult

@@ -1,3 +1,4 @@
+using Polly;
 using Search.Contracts;
 using Search.Services;
 
@@ -12,20 +13,20 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<ISearchService, SearchService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
-builder.Services.AddScoped<IProductsService, ProductsService>(); 
+builder.Services.AddScoped<IProductsService, ProductsService>();
 
 builder.Services.AddHttpClient("OrdersService", config =>
 {
     config.BaseAddress = new Uri(builder.Configuration["Services:Orders"]);
-});
+}).AddTransientHttpErrorPolicy(p => p.WaitAndRetryAsync(5, _ => TimeSpan.FromMilliseconds(500)));
 builder.Services.AddHttpClient("ProductsService", config =>
 {
     config.BaseAddress = new Uri(builder.Configuration["Services:Products"]);
-});
+}).AddTransientHttpErrorPolicy(p => p.WaitAndRetryAsync(5, _ => TimeSpan.FromMilliseconds(500)));
 builder.Services.AddHttpClient("CustomersService", config =>
 {
     config.BaseAddress = new Uri(builder.Configuration["Services:Customers"]);
-});
+}).AddTransientHttpErrorPolicy(p => p.WaitAndRetryAsync(5, _ => TimeSpan.FromMilliseconds(500)));
 
 var app = builder.Build();
 
