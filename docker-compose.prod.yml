@@ -1,0 +1,33 @@
+version: '3.4'
+
+services:
+  customers:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    ports:
+      - "80"
+      #- "6001:80"
+
+  orders:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    ports:
+      - "80"
+      #- "6002:80"
+
+  products:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    ports:
+      - "80"
+      #- "6003:80"
+
+  search:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - Services__Orders=http://orders
+      - Services__Products=http://products
+      - Services__Customers=http://customers
+    ports:
+      - "6004:80"
+

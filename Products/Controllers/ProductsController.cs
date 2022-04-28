@@ -18,6 +18,11 @@ namespace Products.Controllers
         [HttpGet(Name = "GetAll")]
         public IEnumerable<Product> GetAll()
         {
+#if DEBUG
+            Console.WriteLine("Debug");
+#else
+            Console.WriteLine("Release");
+#endif
             return _productsRepository.GetAll();
         }
 
